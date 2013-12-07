@@ -940,10 +940,10 @@ class Formation {
 
 		//allow label to be set via attributes array (defaults to labels array and then to a label derived from the field's name)
 		$fieldLabel = Config::get('formation::autoFieldLabel');
-		if (!is_null($name)) {
-			$label = static::nameToLabel($name);
+		if (!is_null(static::$labels[$name])) {
+			$label = static::$labels[$name];
 		} else {
-			$label = $name;
+			$label = static::nameToLabel($name);
 		}
 		if (is_array($attributes) && isset($attributes['label'])) {
 			$label = $attributes['label'];
